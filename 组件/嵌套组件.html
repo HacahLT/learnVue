@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>基本使用</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <school></school>
+    </div>
+</body>
+
+<script type="text/javascript">
+    Vue.config.productionTip = false
+
+    const playground = Vue.extend({
+        template:`
+        <div>
+            <h1>{{msg}}</h1>
+            </div>
+        `,
+        data(){
+            return {
+                msg:"运动的操场"
+            }
+        }
+    })
+
+    const school = Vue.extend({
+        template:`
+        <div>
+            <h1>{{msg}}</h1>
+            <playground></playground>
+            </div>
+        `,
+        data(){
+            return {
+                msg:"广州大学"
+            }
+        },
+        components:{
+            playground
+        }
+    })
+
+   
+   
+
+
+    new Vue({
+        el:'#root',
+        components:{
+            school
+        }
+    })
+  
+
+</script>
+
+</html>
