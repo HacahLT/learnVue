@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>基本使用</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <h1>{{msg}}</h1>
+        <st></st>
+        <school></school>
+        <hello></hello>
+    </div>
+    <hr>
+    <div id="root2">
+        <student></student>
+    </div>
+   
+
+</body>
+
+<script type="text/javascript">
+    Vue.config.productionTip = false
+
+
+    // 组件1
+    let student = Vue.extend({
+        template:`
+        <div>
+        <h1>{{name}}</h1>
+        <h1 v-text="age"></h1>
+        </div>
+                   `,
+        data() {
+            return {
+                name: "张三",
+                age: "19"
+            }
+        }
+    })
+
+    // 组件2
+    let school = Vue.extend({
+        template:`   
+        <div>
+        <h1>{{schoolName}}</h1>
+        <h1 v-text="num"></h1>
+        </div>`,
+        data(){
+            return {schoolName:"中山大学", num:1421132}
+        }
+    })
+
+   
+
+    let hello = Vue.extend({
+        template:`
+        <div>
+            <h2>你好{{message}}</h2>
+            </div>
+        `,
+        data(){
+            return {message:"Tom"}
+        }
+    })
+
+    // 全局组件注册，到处使用都可
+    Vue.component("hello",hello)
+
+    new Vue({
+        el:"#root",
+        components:{
+            school:school,
+            st:student
+        },
+        data:{
+            msg:"你好"
+        }
+    })
+
+    new Vue({
+        el:"#root2",
+        components:{
+            student
+        }
+    })
+
+</script>
+
+</html>

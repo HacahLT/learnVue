@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+    
+    <div id="root">
+    </div>
+
+    <script type="text/javascript">
+        Vue.config.productionTip = false
+
+        let num = 10;
+        let stud = {
+            name:"lisa"
+        }
+
+        Object.defineProperty(stud,"age",{
+            // value: 2,
+            // enumerable:true, //控制属性是否可以枚举，默认值是false
+            // writable:true, //控制属性是否可以被修改，默认值是false
+            // configurable:true //控制属性是否可以被删除，默认值是false
+
+            get(){
+                console.log('有人读取age属性了')
+                return num;
+            },
+
+            //当有人修改person的age属性时，set函数(setter)就会被调用，且会收到修改的具体值
+            set(value){
+                console.log('有人修改了age属性，且值是',value)
+                num = value
+            }
+
+        })
+
+        console.log(stud)
+
+    </script>
+</body>
+</html>
