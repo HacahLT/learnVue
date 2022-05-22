@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../js/vue.js"></script>
+    <title>绑定样式</title>
+    <style>
+      .css1 {
+        font-size: 30px;
+        text-shadow: 2px 2px 10px rgb(145, 52, 138);
+      }
+      .css2 {
+        border-radius: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <h3 :class="cssArr">样式</h3>
+    </div>
+
+    <script type="text/javascript">
+      Vue.config.productionTip = false;
+
+      new Vue({
+        el: "#root",
+        data() {
+          return {
+            cssArr: ["css1", "css2"],
+          };
+        },
+      });
+    </script>
+  </body>
+</html>

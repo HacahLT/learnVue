@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../js/vue.js"></script>
+    <title>天气转换</title>
+  </head>
+  <body>
+    <div id="root">
+      <h3>今天很{{weather}}</h3>
+      <button type="button" @click="cg">点击转换天气</button>
+    </div>
+
+    <script type="text/javascript">
+      Vue.config.productionTip = false;
+
+      let vm = new Vue({
+        el: "#root",
+        data() {
+          return {
+            weatherStatus: true,
+            weather: "炎热",
+          };
+        },
+        methods: {
+          cg() {
+            this.weatherStatus = !this.weatherStatus;
+          },
+        },
+        // 内部定义
+        watch: {
+          //   weatherStatus: {
+          //     immediate: true, //初始化时让handler调用一下
+          //     deep: true, //深度监视
+          //     handler(newValue, oldValue) {
+          //       console.log(newValue);
+          //       console.log(oldValue);
+          //       if (newValue) {
+          //         this.weather = "炎热";
+          //       } else {
+          //         this.weather = "寒冷";
+          //       }
+          //     },
+          //   },
+
+          // 简写
+          weatherStatus(newValue, oldValue) {
+            if (newValue) {
+              this.weather = "炎热";
+            } else {
+              this.weather = "寒冷";
+            }
+          },
+        },
+      });
+
+      // 外部定义
+      //   vm.$watch("weatherStatus", {
+      //     immediate: true, //初始化时让handler调用一下
+      //     deep: true,
+      //     // 当监听的值发生变化时改变
+      //     handler(newValue, oldValue) {
+      //       console.log(newValue);
+      //       console.log(oldValue);
+      //       if (newValue) {
+      //         this.weather = "炎热";
+      //       } else {
+      //         this.weather = "寒冷";
+      //       }
+      //     },
+      //   });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>列表渲染基本使用</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+  </head>
+  <body>
+    <div id="root">
+      <div>
+        <!-- s是值，index是序号（0开始，可省略） -->
+        <ul v-for="(s,index1) in student" :key="index">
+          <!-- c是value,key是对应的键，index是序号（key和index可省略） -->
+          <li v-for="(c,key,index2) in s" :key="key">
+            {{key+":"+c+"--"+index2}}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+
+  <script type="text/javascript">
+    Vue.config.productionTip = false;
+
+    const vm = new Vue({
+      el: "#root",
+      data: {
+        student: [
+          {
+            name: "张三",
+            age: 22,
+          },
+          {
+            name: "李四",
+            age: 19,
+          },
+        ],
+      },
+    });
+  </script>
+</html>
